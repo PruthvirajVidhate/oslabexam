@@ -1,0 +1,150 @@
+
+
+
+Q1.
+
+┌──(kali㉿kali)-[~/Desktop/oslabexam]
+└─$ nano labq1.c     
+
+
+
+
+──(kali㉿kali)-[~/Desktop/oslabexam]
+└─$ cat labq1.c
+
+
+#include <stdio.h>
+
+int main()
+{
+   int num1 ;
+  
+     int num2; 
+   int multiply  = 0; 
+
+   printf("Enter 1st Number :\n");
+   scanf("%d", &num1);
+
+
+      printf("Enter 2st Number :\n");
+      scanf("%d",&num2); 
+
+
+
+   
+   while(num2 != 0)
+   {
+      multiply += num1;
+      num2--;
+   }
+
+   printf("\nMultiplication is = %d\n",multiply);
+   return 0;
+}
+
+
+
+
+
+
+
+──(kali㉿kali)-[~/Desktop/oslabexam]
+└─$ gcc labq1.c
+                                                                                                                                                           
+┌──(kali㉿kali)-[~/Desktop/oslabexam]
+└─$ ./a.out 
+Enter 1st Number :
+10
+Enter 2st Number :
+9
+
+Multiplication is = 90
+
+
+
+
+
+====================================================================================================
+
+
+
+Q2.
+
+
+(kali㉿kali)-[~/Desktop/oslabexam]
+└─$ cat labq2.c
+#include <stdio.h>
+
+#include <pthread.h>
+#include <stdlib.h>
+
+void *funct(void *args);
+int main()
+{
+
+pthread_t t1,t2;
+        pthread_create(&t1, NULL, funct,NULL);
+//      pthread_create(&t2, NULL, funct2,NULL);
+
+        pthread_join(t1,NULL);
+//      pthread_join(t2,NULL);
+
+        printf("\n Threads are finished");
+
+
+printf("exicution of  thread \n");
+
+
+}
+
+
+void *funct(void *args)
+{
+printf("In thread 1 \n");
+
+ FILE *fp;   
+    char fName[20];
+ 
+    printf("Enter file name  :");
+    scanf("%s",fName);
+ 
+   
+    fp=fopen(fName,"w");
+    
+    if(fp==NULL)
+    {
+        printf("File not created");
+        exit(0); 
+    }
+ 
+    printf("File created successfully.");
+    return 0;
+
+
+
+}
+                                                                                                                                                           
+┌──(kali㉿kali)-[~/Desktop/oslabexam]
+└─$ 
+
+
+
+
+
+
+
+
+output
+
+──(kali㉿kali)-[~/Desktop/oslabexam]
+└─$ nano labq2.c
+                                                                                                                                                           
+┌──(kali㉿kali)-[~/Desktop/oslabexam]
+└─$ gcc labq2.c
+                                                                                                                                                           
+┌──(kali㉿kali)-[~/Desktop/oslabexam]
+└─$ ./a.out 
+In thread 1 
+Enter file name  :pruthvi2.txt
+File created successfully.
+ Threads are finishedexicution of  thread 
